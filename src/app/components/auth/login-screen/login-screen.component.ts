@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { InputEmailComponent } from "../../common/input-email/input-email.component";
+import { InputEmailComponent } from '@components/common/input-email/input-email.component';
+
 
 @Component({
   selector: 'app-login-screen',
