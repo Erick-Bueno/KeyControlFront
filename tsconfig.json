@@ -23,7 +23,8 @@
       "@services/*" : ["./src/app/data/services/*"],
       "@enums/*" : ["./src/app/data/enum/*"],
       "@models/*" : ["./src/app/data/models/*"],
-      "@commons/*" : ["./src/app/components/common/*"]
+      "@commons/*" : ["./src/app/components/common/*"],
+      "@states/*" : ["./src/app/data/*"]
     }
   },
   "angularCompilerOptions": {
