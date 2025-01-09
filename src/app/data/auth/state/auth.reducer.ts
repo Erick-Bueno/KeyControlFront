@@ -5,11 +5,11 @@ import { authActions } from "./auth.action";
 
 export interface LoginState {
     user: LoginResponse | null,
-    error: string | null
-    status: LoginStats 
+    error: Record<string, string[]> | null
+    status: LoginStats
 }
 
-const initialState:LoginState = {
+const initialState: LoginState = {
     error: null,
     status: LoginStats.pending,
     user: null
@@ -24,14 +24,14 @@ export const authReducer = createReducer(
         error: null,
     })),
 
-    on(authActions.loginSuccess, (state, {user}) => ({
+    on(authActions.loginSuccess, (state, { user }) => ({
         ...state,
         status: LoginStats.success,
         error: null,
         user: user
     })),
 
-    on(authActions.loginFailure, (state, {error}) => ({
+    on(authActions.loginFailure, (state, { error }) => ({
         ...state,
         status: LoginStats.success,
         error: error,

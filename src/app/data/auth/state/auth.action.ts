@@ -14,7 +14,7 @@ const loginSuccess = createAction(
 
 const loginFailure = createAction(
     '[Auth] Login Failure',
-    props<{ error: string }>()
+    props<{ error: Record<string, string[]> }>()
 )
 
 export const authActions = {
