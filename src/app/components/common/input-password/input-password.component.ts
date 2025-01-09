@@ -1,11 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-password',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './input-password.component.html',
   styleUrl: './input-password.component.css'
 })
-export class InputPasswordComponent {
+export class InputPasswordComponent implements ControlValueAccessor {
+
+  value = '';
+  private ngControl = inject(NgControl)
+  constructor(){
+    if(this.ngControl){
+      this.ngControl.valueAccessor = this;
+    }
+  }
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onChange?: (value: string) => void = () => { };
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  onTouched?: () => void = () => { };
+
+  writeValue(obj:string | undefined): void {
+    if(obj !== undefined){
+      this.value = obj;
+    }
+  }
+  registerOnChange(fn: (value:string) => void): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
 
 }
