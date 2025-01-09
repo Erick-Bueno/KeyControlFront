@@ -15,6 +15,6 @@ export class LoginService {
   private url = environment.baseUrl
   constructor(private http: HttpClient) { }
   login(loginRequest: LoginRequest):Observable<LoginResponse>{
-    return this.http.post<LoginResponse>(this.url, loginRequest);
+    return this.http.post<LoginResponse>(`${this.url}/auth/login`, loginRequest);
   }
 }
