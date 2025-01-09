@@ -1,4 +1,4 @@
 <div class="container-input-email">
-    <input class="input-email" required type="email" name="" id="email" placeholder="">
+    <input class="input-email" required type="email" name="" id="email" placeholder="" [(ngModel)]="value" (ngModelChange)="updateValue()" (blur)="onTouched()" >
     <label for="email">Email</label>
 </div>
