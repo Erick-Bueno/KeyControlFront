@@ -6,6 +6,6 @@ const login = createAction(
     props<{ email: string, password: string }>()
 )
 
-export const AuthActions = {
+export const authActions = {
     login
 }
