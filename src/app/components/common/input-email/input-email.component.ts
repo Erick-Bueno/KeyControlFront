@@ -1,25 +1,25 @@
-import { Component, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, inject } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input-email',
   imports: [FormsModule],
   templateUrl: './input-email.component.html',
   styleUrl: './input-email.component.css',
-  providers:[
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => InputEmailComponent),
-      multi: true
-    }
-  ]
 })
 export class InputEmailComponent implements  ControlValueAccessor {
   value = '';
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onChange: (value: string) => void = () => {};
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onTouched: () => void = () => {};
+
+  private ngControl = inject(NgControl, {optional:true});
+  protected onTouched?: () => void;
+  protected onChange?: (value:string) => void;
+
+
+  constructor(){
+    if(this.ngControl){
+      this.ngControl.valueAccessor = this;
+    }
+  }
 
   writeValue(obj: string | undefined): void {
     if (obj !== undefined) {
@@ -31,10 +31,6 @@ export class InputEmailComponent implements  ControlValueAccessor {
   }
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
-  }
-
-  updateValue(): void {
-    this.onChange(this.value);
   }
 
 }
