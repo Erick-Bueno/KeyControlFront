@@ -22,7 +22,7 @@ export class LoginScreenComponent {
   private store = inject(Store)
   private router = inject(Router)
   private formBuilder = inject(NonNullableFormBuilder)
-  errorMessage$ = this.store.select(loginErrorSelector);
+  errors$ = this.store.select(loginErrorSelector);
   protected form = this.formBuilder.group({
     email: [null, [Validators.required, Validators.email]],
     password: [null, [Validators.required, Validators.pattern("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-_@#$%]).{8,}")]]
