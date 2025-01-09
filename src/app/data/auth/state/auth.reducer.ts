@@ -15,14 +15,13 @@ const initialState:LoginState = {
     user: null
 }
 
-export const AuthReducer = createReducer(
+export const authReducer = createReducer(
     initialState,
 
     on(authActions.login, (state) => ({
         ...state,
         status: LoginStats.loading,
         error: null,
-        user: null
     })),
 
     on(authActions.loginSuccess, (state, {user}) => ({
