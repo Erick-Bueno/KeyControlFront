@@ -1,5 +1,6 @@
-<form [formGroup]="form" action="">
+<form onsubmit="submit" [formGroup]="form" action="">
     <app-input-email formControlName="email"></app-input-email>
     <app-input-password formControlName="password"></app-input-password>
-    <app-button-auth [buttonText] = buttonText></app-button-auth>
+    <app-button-auth [buttonText]="buttonText"></app-button-auth>
 </form>
+{{ errorMessage$ | async }}
