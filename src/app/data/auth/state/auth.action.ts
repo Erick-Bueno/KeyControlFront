@@ -1,5 +1,6 @@
 import { createAction, props } from "@ngrx/store";
 import { LoginResponse } from "../responses/login-response";
+import { GlobalErrorResponse } from "@states/global-error-response";
 
 
 const login = createAction(
@@ -14,7 +15,7 @@ const loginSuccess = createAction(
 
 const loginFailure = createAction(
     '[Auth] Login Failure',
-    props<{ error: Record<string, string[]> }>()
+    props<{ error: GlobalErrorResponse }>()
 )
 
 export const authActions = {

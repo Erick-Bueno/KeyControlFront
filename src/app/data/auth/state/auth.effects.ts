@@ -7,6 +7,7 @@ import { LoginRequest } from "../requests/login-request";
 import { CookieService } from 'ngx-cookie-service';
 import { HttpErrorResponse } from "@angular/common/http";
 
+
 export const loginEffect = createEffect(
     (actions$ = inject(Actions), loginService = inject(LoginService)) => {
         return actions$.pipe(
@@ -14,8 +15,7 @@ export const loginEffect = createEffect(
             switchMap(action => loginService.login(new LoginRequest(action.email, action.password)).pipe(
                 map((user) => authActions.loginSuccess({ user })),
                 catchError((error: HttpErrorResponse) => {
-                    const validationErrors = error.error as ValidationErrorResponse
-                    return of(authActions.loginFailure({ error: validationErrors.errors }))
+                    return of(authActions.loginFailure({error: error.error}))
                 })
             ))
         )
@@ -34,11 +34,3 @@ export const saveUserInCookiesEffect = createEffect(
 )
 
 
-
-export interface ValidationErrorResponse {
-    type: string;
-    title: string;
-    status: number;
-    traceId: string;
-    errors: Record<string, string[]>;
-}
