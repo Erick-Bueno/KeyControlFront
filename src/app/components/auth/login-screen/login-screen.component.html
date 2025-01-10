@@ -1,15 +1,11 @@
 <form (ngSubmit)="submit()" [formGroup]="form" action="">
     <app-input-email formControlName="email"></app-input-email>
-    <div *ngIf="errors$ | async as error">
-        <div *ngIf="error" class="error">
-          {{ error['Email'][0] }}
-        </div>
-      </div>
+    @if (errors$ | async ; as errors) {
+        <div>{{errors.errors?.["Email"]?.[0]}}</div>
+    }
     <app-input-password formControlName="password"></app-input-password>
-    <div *ngIf="errors$ | async as error">
-        <div *ngIf="error['Password']" class="error">
-          {{ error['Password'][0] }}
-        </div>
-      </div>
+    @if (errors$ | async ; as errors) {
+        <div>{{errors.errors?.["Password"]?.[0]}}</div>
+    }
     <app-button-auth [buttonText]="buttonText"></app-button-auth>
 </form>
