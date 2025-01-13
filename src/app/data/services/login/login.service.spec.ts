@@ -4,7 +4,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { LoginResponse } from '@states/responses/login-response';
 import { LoginRequest } from '@states/requests/login-request';
-fdescribe('LoginService', () => {
+describe('LoginService', () => {
   let service: LoginService;
   let httpMock: HttpTestingController;
   beforeEach(() => {
