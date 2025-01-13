@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { LoginResponse } from "../responses/login-response";
+import { LoginResponse } from "../../responses/login-response";
 import { GlobalErrorResponse } from "@states/global-error-response";
 
 

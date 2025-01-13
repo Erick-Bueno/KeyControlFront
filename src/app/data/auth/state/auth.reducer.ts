@@ -1,5 +1,5 @@
 import { LoginStats } from "@enums/login-stats";
-import { LoginResponse } from "../responses/login-response";
+import { LoginResponse } from "../../responses/login-response";
 import { createReducer, on } from "@ngrx/store";
 import { authActions } from "./auth.action";
 import { GlobalErrorResponse } from "@states/global-error-response";

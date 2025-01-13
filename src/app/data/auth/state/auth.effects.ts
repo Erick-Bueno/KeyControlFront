@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { LoginService } from "../services/login/login.service";
 import { authActions } from "./auth.action";
 import { catchError, map, of, switchMap, tap } from "rxjs";
-import { LoginRequest } from "../requests/login-request";
+import { LoginRequest } from "../../requests/login-request";
 import { CookieService } from 'ngx-cookie-service';
 import { HttpErrorResponse } from "@angular/common/http";
 
