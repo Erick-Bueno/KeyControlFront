@@ -10,6 +10,8 @@ import { ControlValueAccessor, FormsModule, NgControl } from '@angular/forms';
 export class InputPasswordComponent implements ControlValueAccessor {
 
   value = '';
+  showEye = true;
+  inputType = "password";
   private ngControl = inject(NgControl)
   constructor(){
     if(this.ngControl){
@@ -33,4 +35,12 @@ export class InputPasswordComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
+  showPassword() {
+    this.showEye = !this.showEye
+    if(this.showEye === false){
+      this.inputType = 'text'
+      return;
+    }
+    this.inputType = 'password';
+  }
 }
